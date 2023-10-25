@@ -1,26 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Document</title>
+<x-layout>
 
-</head>
-<body>
+    <x-slot name="title">
+        Delete Country
+    </x-slot>
 
-
-
-{{--var_dump($data);--}}
-{{--exit;--}}
 <div class="container">
-
-
     <h2 style="text-align: center">Delete Country</h2>
     {{--    @if($errors->any())--}}
     {{--    <p class="text-danger">Fix the Following errors</p>--}}
@@ -44,10 +28,9 @@
             @error('Code')
             <p class="text-danger text-sm">{{ $message }}</p>
             @enderror
-            <input type="submit"class="btn btn-danger"  value="Delete">
+            <input type="submit" class="btn btn-danger" value="Delete">
         </form>
     </div>
 </div>
-</body>
 
-</html>
+</x-layout>

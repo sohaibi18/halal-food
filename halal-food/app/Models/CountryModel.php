@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class CountryModel extends Model
 {
     use HasFactory;
+
     protected $table = 'countries';
 
-     public $timestamps = false;
+    public $timestamps = false;
 //    protected $guarded = ['*'];
     protected $fillable = [
         'Country',
         'Code',
-        ];
+    ];
 
 
 }

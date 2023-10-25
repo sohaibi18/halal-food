@@ -18,6 +18,34 @@ use \App\Http\Controllers\CountryController;
 //    return view('CountryView');
 //});
 
+//Route::group([
+//    'prefix' => '/country',
+//    'Controller' => CountryController::class
+//], function () {
+//    Route::get('/create', function () {
+//        return view('CountryView');
+//    })->name('country.create');
+//
+//    Route::post('',[ 'store']);
+//
+//    Route::get('/show', ['index']);
+//
+//// route for edit operation
+//    Route::get('/{id}/edit', ['edit']);
+//
+//// route for update
+//    Route::put('/{id}', ['update']);
+//
+//// route for fetch data for delete
+//    Route::get('/{id}/delete', ['delete']);
+//
+//// route for delete
+//    Route::delete('/{id}', ['destroy']);
+////Route::post('/country',[CountryController::class, 'store']);
+//
+//});
+
+
 Route::get('/country/create', function (){
 return view('CountryView');
 })->name('country.create');
@@ -36,6 +64,6 @@ Route::put('/country/{id}',[CountryController::class,'update']);
 Route::get('/country/{id}/delete',[CountryController::class,'delete']);
 
 // route for delete
-Route::delete('country/{id}',[CountryController::class,'destroy']);
+Route::delete('/country/{id}',[CountryController::class,'destroy']);
 //Route::post('/country',[CountryController::class, 'store']);
 
