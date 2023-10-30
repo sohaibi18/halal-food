@@ -41,5 +41,6 @@
         @endforeach
         </tbody>
     </table>
+    {{ $countries->links() }}
 </div>
 </x-layout>

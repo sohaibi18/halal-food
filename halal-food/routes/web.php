@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CountryController;
 
@@ -13,6 +14,19 @@ use \App\Http\Controllers\CountryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// to return realtime data for one to many relationship on webpage
+Route::get('/test', function (){
+    return \App\Models\CountryModel::with('user')->first();
+});
+// Or
+Route::get('/test1', function (){
+    return \App\Models\User::with('countries')->first();
+});
+
+
+
+
 
 Route::get('/country', function () {
     return view('CountryView');
@@ -46,6 +60,26 @@ Route::group([
 
 });
 
+Route::get('/register', function () {
+    return view('registration');
+})->name('logout');
+
+
+Route::get('/',function (){
+    return view('welcome');
+})->name('main')
+    ->middleware('auth');
+
+
+Route::post('/register', [RegisterController::class, 'create']);
+
+Route::get('/login',[RegisterController::class,'index'])
+    ->middleware('throttle:5,1');
+
+Route::post('/login',[RegisterController::class,'enter']);
+
+Route::get('/logout',[RegisterController::class,'logout']);
+
 
 //Route::get('/country/create', function (){
 //return view('CountryView');
@@ -68,3 +102,25 @@ Route::group([
 //Route::delete('/country/{id}',[CountryController::class,'destroy']);
 ////Route::post('/country',[CountryController::class, 'store']);
 
+
+
+
+
+
+
+// Breeze auto generated routes
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
+//
+//Route::middleware('auth')->group(function () {
+//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//});
+//
+//require __DIR__.'/auth.php';

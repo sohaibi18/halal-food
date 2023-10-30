@@ -7,6 +7,7 @@ use App\Models\CountryModel;
 use http\Message;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use mysql_xdevapi\Schema;
 use PhpParser\Node\Stmt\Return_;
 
@@ -16,6 +17,7 @@ class CountryController extends Controller
     public function store(CountryCreateRequest $request)
     {
         CountryModel::create([
+            'user_id' => Auth::user()->id,
             'Country' => $request->Country,
             'Code' => $request->Code,
         ]);
@@ -26,7 +28,7 @@ class CountryController extends Controller
 
     public function index()
     {
-        $data = CountryModel::all();
+        $data = CountryModel::paginate(10);
         return view('country.index', ['countries' => $data]);
 
 

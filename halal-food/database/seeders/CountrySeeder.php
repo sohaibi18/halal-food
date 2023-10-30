@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CountryModel;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,9 +14,15 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
-        CountryModel::create([
-            'Country' => fake()->country(),
-            'Code' => fake()->countryCode,
-        ]);
+        $user = User::factory([
+            'name'=>'Sohaib',
+        ])->create();
+
+
+        CountryModel::factory()
+            ->for($user)
+            ->count(100)
+            ->create();
+
     }
 }
